@@ -1,6 +1,5 @@
-import Link from "next/link";
 import { LESSONS, SECTIONS, lessonsBySection } from "@/lib/curriculum";
-import { LevelBadge } from "@/components/Sidebar";
+import { LevelBadge, TopicLink } from "@/components/Sidebar";
 
 export default function HomePage() {
   const first = LESSONS[0];
@@ -21,18 +20,18 @@ export default function HomePage() {
           designs without drowning in jargon.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <Link
+          <TopicLink
             href={`/learn/${first.slug}`}
             className="rounded-md bg-[var(--ink)] px-5 py-2.5 text-sm font-semibold text-[var(--bg)] transition hover:bg-[var(--accent)]"
           >
             Start with foundations
-          </Link>
-          <Link
+          </TopicLink>
+          <TopicLink
             href="/learn/url-shortener"
             className="rounded-md border border-[var(--line)] bg-[var(--panel)] px-5 py-2.5 text-sm font-semibold text-[var(--ink)] transition hover:border-[var(--accent)]"
           >
             Jump to first design problem
-          </Link>
+          </TopicLink>
         </div>
       </section>
 
@@ -63,7 +62,7 @@ export default function HomePage() {
               </div>
               <div className="grid gap-3">
                 {lessons.map((lesson) => (
-                  <Link
+                  <TopicLink
                     key={lesson.slug}
                     href={`/learn/${lesson.slug}`}
                     className="card-link flex flex-col gap-2 rounded-lg border border-[var(--line)] bg-[var(--panel)] px-4 py-4 sm:flex-row sm:items-center sm:justify-between"
@@ -79,7 +78,7 @@ export default function HomePage() {
                       <LevelBadge level={lesson.level} />
                       <span>{lesson.minutes} min</span>
                     </div>
-                  </Link>
+                  </TopicLink>
                 ))}
               </div>
             </div>

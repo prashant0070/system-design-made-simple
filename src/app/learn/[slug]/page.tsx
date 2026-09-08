@@ -1,7 +1,6 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Markdown } from "@/components/Markdown";
-import { LevelBadge } from "@/components/Sidebar";
+import { LevelBadge, TopicLink } from "@/components/Sidebar";
 import { getAdjacentLessons, LESSONS } from "@/lib/curriculum";
 import { getLessonContent } from "@/lib/content";
 
@@ -34,7 +33,9 @@ export default async function LessonPage({ params }: Props) {
     <article className="px-5 py-8 sm:px-8 lg:px-12 lg:py-12">
       <div className="mb-6 flex flex-wrap items-center gap-3 text-sm text-[var(--muted)]">
         <LevelBadge level={lesson.level} />
-        <span>Lesson {lesson.order} of {LESSONS.length}</span>
+        <span>
+          Lesson {lesson.order} of {LESSONS.length}
+        </span>
         <span>·</span>
         <span>{lesson.minutes} min read</span>
       </div>
@@ -47,24 +48,28 @@ export default async function LessonPage({ params }: Props) {
 
       <nav className="mt-14 grid gap-3 border-t border-[var(--line)] pt-6 sm:grid-cols-2">
         {prev ? (
-          <Link
+          <TopicLink
             href={`/learn/${prev.slug}`}
             className="rounded-lg border border-[var(--line)] bg-[var(--panel)] px-4 py-3 transition hover:border-[var(--accent)]"
           >
-            <span className="block text-xs uppercase tracking-[0.12em] text-[var(--muted)]">Previous</span>
+            <span className="block text-xs uppercase tracking-[0.12em] text-[var(--muted)]">
+              Previous
+            </span>
             <span className="font-medium text-[var(--ink)]">{prev.title}</span>
-          </Link>
+          </TopicLink>
         ) : (
           <div />
         )}
         {next ? (
-          <Link
+          <TopicLink
             href={`/learn/${next.slug}`}
             className="rounded-lg border border-[var(--line)] bg-[var(--panel)] px-4 py-3 text-right transition hover:border-[var(--accent)]"
           >
-            <span className="block text-xs uppercase tracking-[0.12em] text-[var(--muted)]">Next</span>
+            <span className="block text-xs uppercase tracking-[0.12em] text-[var(--muted)]">
+              Next
+            </span>
             <span className="font-medium text-[var(--ink)]">{next.title}</span>
-          </Link>
+          </TopicLink>
         ) : null}
       </nav>
     </article>
