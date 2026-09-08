@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f6f1e8;
+  --sidebar: #efe7da;
+  --panel: #fffaf3;
+  --ink: #10233a;
+  --ink-soft: #31465f;
+  --muted: #6a7c90;
+  --line: #d9cfbf;
+  --accent: #1f6f6a;
+  --accent-soft: #d7efe8;
+  --code-bg: #e9e1d4;
+  --hero-glow: rgba(31, 111, 106, 0.18);
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--ink);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+}
+
+body {
+  background:
+    radial-gradient(1200px 500px at 10% -10%, var(--hero-glow), transparent 60%),
+    radial-gradient(900px 400px at 100% 0%, rgba(16, 35, 58, 0.08), transparent 55%),
+    linear-gradient(180deg, #f8f3ea 0%, var(--bg) 40%, #f3ece2 100%);
+  color: var(--ink);
+  font-family: var(--font-body), "Segoe UI", sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+.prose-lesson {
+  max-width: 48rem;
+  line-height: 1.7;
+}
+
+.prose-lesson h1 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.prose-lesson h2 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.55rem;
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.prose-lesson h3 {
+  font-size: 1.1rem;
+  font-weight: 650;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose-lesson p,
+.prose-lesson ul,
+.prose-lesson ol {
+  margin: 0.85rem 0;
+  color: var(--ink-soft);
+}
+
+.prose-lesson ul,
+.prose-lesson ol {
+  padding-left: 1.25rem;
+}
+
+.prose-lesson li {
+  margin: 0.35rem 0;
+}
+
+.prose-lesson strong {
+  color: var(--ink);
+  font-weight: 650;
+}
+
+.prose-lesson .mermaid-frame svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.card-link {
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.card-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(16, 35, 58, 0.08);
+  border-color: #c4b7a2;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-rise {
+  animation: rise-in 520ms ease both;
+}
+
+.animate-rise-delay {
+  animation: rise-in 680ms 80ms ease both;
+}
